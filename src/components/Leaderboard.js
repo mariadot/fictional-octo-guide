@@ -8,12 +8,12 @@ class Leaderboard extends Component {
 
         return(
             <div>
-                <ul>
-                { Object.keys(users).map((id) => (
-                        <li key={users[id].id}>
-                            <UserProfile />
-                        </li>
-                ))}
+                <ul className='ui one column stackable center aligned grid'>
+                    { Object.keys(users).map((id) => (
+                            <li key={users[id].id} className='row'>
+                                <UserProfile id={users[id].id}/>
+                            </li>
+                    ))}
                 </ul>
             </div>
         )
