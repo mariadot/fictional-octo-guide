@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from  'react-redux';
-import { handleGetUsers as getUsers } from '../actions/users'
+import { handleGetUsers as getUsers } from '../actions/users';
+import Nav from './Nav';
 import Leaderboard from './Leaderboard';
 import LoadingBar from 'react-redux-loading';
 
@@ -14,8 +15,9 @@ class App extends Component {
 
     render() {
             return (
-                <div className="App">
+                <div className='ui container'>
                     <LoadingBar />
+                    <Nav/>
                     <Leaderboard />
                 </div>
         );
