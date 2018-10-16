@@ -1,3 +1,11 @@
 ul {
-  list-style: none;
+    list-style: none;
+}
+
+.new-question .field {
+    margin: 5px 0;
+}
+
+.new-question button.button {
+    margin-top: 5px;
 }
