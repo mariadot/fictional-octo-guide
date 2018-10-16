@@ -3,6 +3,10 @@ import { connect } from  'react-redux';
 import { handleGetUsers as getUsers } from '../actions/users';
 import Nav from './Nav';
 import Leaderboard from './Leaderboard';
+import NewQuestion from './NewQuestion';
+import QuestionPoll from './QuestionPoll';
+import QuestionResults from './QuestionResults';
+import Question from './Question';
 import LoadingBar from 'react-redux-loading';
 
 import '../App.css';
