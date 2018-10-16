@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class PollResults extends Component {
+class QuestionResults extends Component {
     render(){
         return (
             <div className='new-question ui three column stackable center aligned grid'>
@@ -51,4 +51,4 @@ class PollResults extends Component {
     }
 }
 
-export default PollResults;
+export default QuestionResults;
