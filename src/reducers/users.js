@@ -1,6 +1,6 @@
-import { GET_USERS } from '../actions/users/actionTypes';
+import { GET_USERS, AUTHED_USER } from '../actions/users/actionTypes';
 
-export default function users(state = {}, action) {
+export function users(state = {}, action) {
     switch(action.type) {
         case GET_USERS:
             return {
@@ -9,5 +9,14 @@ export default function users(state = {}, action) {
             }
         default:
             return state
+    }
+}
+
+export function authUser (state = {}, action) {
+    switch(action.type) {
+        case AUTHED_USER: 
+            return action.id;
+        default:
+            return state;
     }
 }

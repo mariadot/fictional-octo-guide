@@ -1,7 +1,7 @@
 import * as API from './../../utils/_DATA';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
-import { getUsers } from './actionCreators';
+import { getUsers, authUser } from './actionCreators';
 
 export function handleGetUsers(){
     return (dispatch) => {
@@ -14,5 +14,13 @@ export function handleGetUsers(){
             .catch(()=>(
                 console.log('There was an error')
             ))
+    }
+}
+
+export function handleAuthUser(user){
+    return(dispatch) => {
+        dispatch(showLoading());
+        dispatch(authUser(user));
+        dispatch(hideLoading());
     }
 }

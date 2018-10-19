@@ -1,3 +1,4 @@
 export {
-    handleGetUsers
+    handleGetUsers,
+    handleAuthUser
 } from './actions';
