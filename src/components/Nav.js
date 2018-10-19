@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 class Nav extends Component {
     render(){
         return (
-            <div class="ui secondary pointing menu">
-                <a class="active item">
+            <div className="ui secondary pointing menu">
+                <a className="active item">
                     Home
                 </a>
-                <a class="item">
+                <a className="item">
                     New Question
                 </a>
-                <a class="item">
+                <a className="item">
                     Leader Board
                 </a>
-                <div class="right menu">
-                    <a class="ui item">
+                <div className="right menu">
+                    <a className="ui item">
                         Logout
                     </a>
                 </div>
