@@ -17,10 +17,8 @@ export function handleGetUsers(){
     }
 }
 
-export function handleAuthUser(user){
+export function handleAuthUser(id){
     return(dispatch) => {
-        dispatch(showLoading());
-        dispatch(authUser(user));
-        dispatch(hideLoading());
+        dispatch(authUser(id));
     }
 }
