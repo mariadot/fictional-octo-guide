@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { handleAuthUser } from '../actions/users';
 
 class Nav extends Component {
+    handleLogout = () =>{
+        const { dispatch } = this.props;
+        dispatch(handleAuthUser(''));
+    }
+
     render(){
         const { authUser } = this.props; 
         return (
@@ -18,20 +24,27 @@ class Nav extends Component {
                             New Question
                         </NavLink>
 
-                    <div className='right menu'>
+                    { authUser && <div className='right menu'>
                         <span className='item'>
                             Hello, Auth User
                         </span>
                         <div className='item'>
-                            <button className='ui button secondary basic'>
+                            <button onClick={this.handleLogout} className='ui button secondary basic'>
                                 Logout
                             </button>
                         </div>
-                    </div>
+                    </div> }
                 </div>
             </nav>
         )
     }
 }
 
-export default connect()(Nav);
+function mapStateToProps({authUser, users}){
+    return {
+        authUser,
+        users
+    }
+}
+
+export default connect(mapStateToProps)(Nav);

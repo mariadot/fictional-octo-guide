@@ -21,7 +21,6 @@ class App extends Component {
 
     render() {
         const { authUser } = this.props;
-        console.log(this.props);
             return (
                 <Router>
                     <Fragment>
