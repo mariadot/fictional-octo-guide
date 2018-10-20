@@ -7,7 +7,7 @@ class Leaderboard extends Component {
         const { users } = this.props;
 
         return(
-            <div>
+            <div className='container'>
                 <ul className='ui one column stackable center aligned grid'>
                     { Object.keys(users).map((id) => (
                             <li key={users[id].id} className='row'>

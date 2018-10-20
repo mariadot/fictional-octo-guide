@@ -31,7 +31,7 @@ class App extends Component {
                             <Route path='/' exact component={ authUser.length > 0 ? Question : Login } />
                             <Route path='/leaderboard' component={Leaderboard} />
                             <Route path='/new-question' component={NewQuestion} />
-                    </div>
+                        </div>
                     </Fragment>
                 </Router>
         );

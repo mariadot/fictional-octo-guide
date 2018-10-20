@@ -20,7 +20,6 @@ class Login extends Component {
         const { dispatch } = this.props;
 
         dispatch(handleAuthUser(user));
-        console.log(this.props);
     }
 
     render(){
@@ -43,6 +42,7 @@ class Login extends Component {
                             <div className='content'>
                                 <div className='field'>
                                     <select className="ui dropdown fluid" onChange={this.handleChange} >
+                                        <option value=''>Select a user</option>
                                         { Object.keys(users).map((id) => (
                                             <option key={users[id].id} value={users[id].id}>{users[id].id}</option>
                                         ))}
