@@ -14,7 +14,7 @@ class Question extends Component {
                                 </header>
                             </div>
                             <div className="content">
-                                <img className='ui image circular tiny left floated' src='https://lorempixel.com/output/cats-q-c-400-400-9.jpg' />  
+                                <img className='ui image circular tiny left floated' alt='user avatar' src='https://lorempixel.com/output/cats-q-c-400-400-9.jpg' />  
                                     <h3>Would you rather...?</h3>
                                     <p>...be invisible...</p>
                             </div>

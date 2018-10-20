@@ -9,7 +9,7 @@ class QuestionResults extends Component {
                         <div class="card">
                             <div class="content">
                                 <div class="header">
-                                    <img class='ui avatar tiny circular image' src='https://lorempixel.com/output/cats-q-c-200-200-9.jpg' />
+                                    <img class='ui avatar tiny circular image' alt='user avatar' src='https://lorempixel.com/output/cats-q-c-200-200-9.jpg' />
                                     <span>Asked by User</span>
                                 </div>
                             </div>
@@ -26,7 +26,7 @@ class QuestionResults extends Component {
                                     <span>1 out of 2 votes</span>
                                 </div>
                                 <div className='ui olive segment'>
-                                <a class="ui olive right corner label">
+                                <a href='#' class="ui olive right corner label">
                                     <i className='check icon'></i>
                                 </a>
                                     <div class="label">Would you rather be invisible?</div>

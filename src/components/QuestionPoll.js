@@ -9,7 +9,7 @@ class QuestionPoll extends Component {
                         <div class="card">
                             <div class="content">
                                 <div class="header">
-                                    <img class='ui avatar tiny circular image' src='https://lorempixel.com/output/cats-q-c-200-200-9.jpg' />
+                                    <img class='ui avatar tiny circular image' alt='user avatar' src='https://lorempixel.com/output/cats-q-c-200-200-9.jpg' />
                                     <span>Username asks</span>
                                 </div>
                             </div>
