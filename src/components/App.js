@@ -8,6 +8,7 @@ import NewQuestion from './NewQuestion';
 import QuestionPoll from './QuestionPoll';
 import QuestionResults from './QuestionResults';
 import Question from './Question';
+import Dashboard from './Dashboard';
 import Login from './Login';
 import LoadingBar from 'react-redux-loading';
 
@@ -27,7 +28,7 @@ class App extends Component {
                         <div className='ui container'>
                             <LoadingBar />
                             <Nav />
-                            <Route path='/' exact component={ authUser.length > 0 ? Question : Login } />
+                            <Route path='/' exact component={ authUser.length > 0 ? Dashboard : Login } />
                             <Route path='/leaderboard' component={Leaderboard} />
                             <Route path='/new-question' component={NewQuestion} />
                         </div>
