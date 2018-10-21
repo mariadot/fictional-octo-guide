@@ -10,7 +10,7 @@ class Nav extends Component {
     }
 
     render(){
-        const { authUser } = this.props; 
+        const { authUser, users, currentUser } = this.props; 
         return (
             <nav>
                 <div className='ui secondary pointing menu'>
@@ -24,9 +24,10 @@ class Nav extends Component {
                             New Question
                         </NavLink>
 
-                    { authUser && <div className='right menu'>
+                    { currentUser && 
+                    <div className='right menu'>
                         <span className='item'>
-                            Hello, Auth User
+                            {`Hello, ${currentUser}`}
                         </span>
                         <div className='item'>
                             <button onClick={this.handleLogout} className='ui button secondary basic'>
@@ -41,9 +42,11 @@ class Nav extends Component {
 }
 
 function mapStateToProps({authUser, users}){
+    const currentUser = users[authUser] ? users[authUser].name : '';
     return {
         authUser,
-        users
+        users,
+        currentUser: currentUser
     }
 }
 
