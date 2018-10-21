@@ -6,13 +6,15 @@ const QuestionsList = ({questions}) => {
         return 'Loading';
     }
 
+    const sortedQuestions = questions.sort((a,b) => (b.timestamp - a.timestamp));
+
     return(
         <div>
             <h2>I'm a list</h2>
             <div className='ui basic segment'>
-                { questions.map((id) => (
-                    <li key={id} className='row'>
-                        <Question questionId={id} />
+                { Object.keys(sortedQuestions).map((question) => (
+                    <li key={questions[question].id} className='row'>
+                        <Question question={questions[question]} />
                     </li>
                 ))}
             </div>

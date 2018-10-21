@@ -35,14 +35,13 @@ class Question extends Component {
     }
 }
 
-function mapStateToProps({users, questions}, {questionId}){
-    const currentQuestion = questions[questionId];
-    const author = users[currentQuestion.author] ? users[currentQuestion.author].name : '';
+function mapStateToProps({users}, {question}){
+    const author = users[question.author] ? users[question.author].name : '';
 
     return {
         users,
         author,
-        question: currentQuestion
+        question: question
     }
 }
 

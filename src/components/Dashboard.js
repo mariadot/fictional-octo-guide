@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleGetQuestions as getQuestions } from '../actions/questions';
 
@@ -18,9 +18,9 @@ class Dashboard extends Component {
 
         Object.keys(questions).forEach(questionId => {
             if(currentUser.answers[questionId]){
-                answeredQuestions.push(questionId);
+                answeredQuestions.push(questions[questionId]);
             } else {
-                unansweredQuestions.push(questionId);
+                unansweredQuestions.push(questions[questionId]);
             }
         });
 
