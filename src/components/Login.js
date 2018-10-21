@@ -44,7 +44,7 @@ class Login extends Component {
                                     <select className="ui dropdown fluid" onChange={this.handleChange} >
                                         <option value=''>Select a user</option>
                                         { Object.keys(users).map((id) => (
-                                            <option key={users[id].id} value={users[id].id}>{users[id].id}</option>
+                                            <option key={users[id].id} value={users[id].id}>{users[id].name}</option>
                                         ))}
                                     </select>
                                 </div>
