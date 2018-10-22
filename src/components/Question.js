@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Question extends Component {
@@ -22,9 +23,9 @@ class Question extends Component {
                                     <p>...{ question.optionOne.text }...</p>
                             </div>
                             <div className="extra content">
-                                <button className="ui basic green button">
+                                <Link to={`/questions/${question.id}`} className='ui basic green button'>
                                     View poll
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
