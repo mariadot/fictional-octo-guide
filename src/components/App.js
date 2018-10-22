@@ -30,7 +30,8 @@ class App extends Component {
                             <Nav />
                             <Route path='/' exact component={ authUser.length > 0 ? Dashboard : Login } />
                             <Route path='/leaderboard' component={Leaderboard} />
-                            <Route path='/new-question' component={NewQuestion} />
+                            <Route path='/add' component={NewQuestion} />
+                            <Route path='/questions/:id' component={QuestionPoll} />
                         </div>
                     </Fragment>
                 </Router>
