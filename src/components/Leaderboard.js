@@ -11,7 +11,7 @@ class Leaderboard extends Component {
             .sort((userA, userB) => (
               (Object.keys(userB.answers).length + userB.questions.length) -
               (Object.keys(userA.answers).length + userA.questions.length)
-            ))
+            ));
 
         return(
             <div className='container'>
