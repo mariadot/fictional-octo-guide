@@ -1,4 +1,4 @@
-import { GET_QUESTIONS } from '../actions/questions/actionTypes';
+import { GET_QUESTIONS, SAVE_QUESTION_ANSWER } from '../actions/questions/actionTypes';
 
 export function questions(state = {}, action) {
     switch(action.type) {
@@ -8,6 +8,19 @@ export function questions(state = {}, action) {
                 ...action.questions
             }
         default:
-            return state
+            return state;
+    }
+}
+
+export function saveQuestionAnswer(state = {}, action) {
+    switch(action.type){
+        case SAVE_QUESTION_ANSWER:
+            const { authedUser, question, answer } = action;
+            return {
+                ...state,
+                newObject:{authedUser, question, answer}
+            }
+        default:
+            return state;
     }
 }

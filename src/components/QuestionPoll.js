@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { handleGetQuestions as getQuestions } from '../actions/questions';
+import { handleGetQuestions as getQuestions, handleSaveQuestionAnswer } from '../actions/questions';
 
 class QuestionPoll extends Component {
+    state = {
+        option: 'optionOne'
+    }
+
     componentDidMount() {
         const { dispatch } = this.props;
         dispatch(getQuestions());
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            option: e.target.value
+        });
+    } 
+
+    onSubmitAnswer = (e) => {
+        const { dispatch, question } = this.props;
+        e.preventDefault();
+        console.log(question.id, this.state.option);
+        dispatch(handleSaveQuestionAnswer(question.id, this.state.option));
     }
 
     render(){
@@ -30,24 +47,34 @@ class QuestionPoll extends Component {
                                 </div>
                             </div>
                             <div className="content">
-                                    <h2>Would you rather...?</h2>
+                                <h2>Would you rather...?</h2>
+                                <form onSubmit={this.onSubmitAnswer}>
                                     <div className='field'>
                                         <div className="ui radio checkbox">
-                                            <input name="optionOne" type="radio" />
+                                            <input
+                                                type="radio" 
+                                                value="optionOne" 
+                                                checked={this.state.option === 'optionOne'}
+                                                onChange={this.handleChange}
+                                            />
                                             <label>{optionOne}</label>
                                         </div>
                                     </div>
                                     <div className='field'>
                                         <div className="ui radio checkbox">
-                                            <input name="optionTwo" type="radio" />
+                                            <input
+                                                type="radio" 
+                                                value="optionTwo" 
+                                                checked={this.state.option === 'optionTwo'}
+                                                onChange={this.handleChange}
+                                            />
                                             <label>{optionTwo}</label>
                                         </div>
                                     </div>
-                                </div>
-                            <div className="extra content">
-                                <button className="ui basic green button">
-                                    Submit your answer
-                                </button>
+                                    <button type='submit 'className='ui basic green button'>
+                                        Submit your answer
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

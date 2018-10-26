@@ -1,7 +1,7 @@
 import * as API from './../../utils/_DATA';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
-import { getQuestions} from './actionCreators';
+import { getQuestions, saveQuestionAnswer } from './actionCreators';
 
 export function handleGetQuestions(){
     return (dispatch) => {
@@ -14,5 +14,27 @@ export function handleGetQuestions(){
             .catch(()=>(
                 console.log('There was an error')
             ))
+    }
+}
+
+export function handleSaveQuestionAnswer(question, answer){
+    return (dispatch, getState) => {
+        const { authUser } = getState();
+        dispatch(showLoading());
+        return API._saveQuestionAnswer({
+            authedUser: authUser,
+            qid: question,
+            answer
+        })
+        .then(()=>{
+            dispatch(saveQuestionAnswer({
+                    authedUser: authUser,
+                    qid: question,
+                    answer: answer
+                }))
+        })
+        .catch(()=>{
+            console.log('There was an error');
+        })
     }
 }
