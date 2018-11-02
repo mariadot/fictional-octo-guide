@@ -1,7 +1,7 @@
 import * as API from './../../utils/_DATA';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
-import { getQuestions, saveQuestionAnswer } from './actionCreators';
+import { getQuestions, saveQuestionVotes } from './actionCreators';
 
 export function handleGetQuestions(){
     return (dispatch) => {
@@ -27,7 +27,7 @@ export function handleSaveQuestionAnswer(question, answer){
             answer
         })
         .then(()=>{
-            dispatch(saveQuestionAnswer({
+            dispatch(saveQuestionVotes({
                     authedUser: authUser,
                     qid: question,
                     answer: answer

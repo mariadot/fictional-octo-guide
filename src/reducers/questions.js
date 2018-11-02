@@ -1,4 +1,4 @@
-import { GET_QUESTIONS, SAVE_QUESTION_ANSWER } from '../actions/questions/actionTypes';
+import { GET_QUESTIONS, SAVE_QUESTION_VOTES } from '../actions/questions/actionTypes';
 
 export function questions(state = {}, action) {
     switch(action.type) {
@@ -7,20 +7,22 @@ export function questions(state = {}, action) {
                 ...state,
                 ...action.questions
             }
-        default:
-            return state;
-    }
-}
-
-export function saveQuestionAnswer(state = {}, action) {
-    switch(action.type){
-        case SAVE_QUESTION_ANSWER:
-            const { authedUser, question, answer } = action;
+        case SAVE_QUESTION_VOTES:
+            const answer = action.question.answer;
+            const qid = action.question.qid;
+            const user = action.question.authedUser;
             return {
                 ...state,
-                newObject:{authedUser, question, answer}
+                [qid]: { 
+                    ...state[qid],
+                    [answer]:{
+                        ...state[qid][answer],
+                        votes: state[qid][answer].votes.concat([user])
+                    }
+                }
             }
         default:
             return state;
     }
 }
+

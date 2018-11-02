@@ -1,4 +1,4 @@
-import { GET_QUESTIONS, SAVE_QUESTION_ANSWER } from './actionTypes';
+import { GET_QUESTIONS, SAVE_QUESTION_ANSWER, SAVE_QUESTION_VOTES } from './actionTypes';
 
 export function getQuestions(questions){
     return {
@@ -10,6 +10,14 @@ export function getQuestions(questions){
 export function saveQuestionAnswer(question, answer){
     return {
         type: SAVE_QUESTION_ANSWER,
+        question,
+        answer,
+    }
+}
+
+export function saveQuestionVotes(question, answer){
+    return {
+        type: SAVE_QUESTION_VOTES,
         question,
         answer,
     }
