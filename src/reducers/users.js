@@ -14,7 +14,7 @@ export function users(state = {}, action) {
     }
 }
 
-export function authUser (state = {}, action) {
+export function authUser (state = '', action) {
     switch(action.type) {
         case AUTHED_USER: 
             return action.id;
