@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { handleGetQuestions as getQuestions, handleSaveQuestionAnswer } from '../actions/questions';
+import { handleSaveUserAnswer } from '../actions/users';
 
 class QuestionPoll extends Component {
     state = {
@@ -24,6 +25,7 @@ class QuestionPoll extends Component {
         e.preventDefault();
         console.log(question.id, this.state.option);
         dispatch(handleSaveQuestionAnswer(question.id, this.state.option));
+        dispatch(handleSaveUserAnswer(question.id, this.state.option));
     }
 
     render(){

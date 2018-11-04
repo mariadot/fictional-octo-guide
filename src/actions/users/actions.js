@@ -1,7 +1,7 @@
 import * as API from './../../utils/_DATA';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
-import { getUsers, authUser } from './actionCreators';
+import { getUsers, authUser, saveUserAnswer } from './actionCreators';
 
 export function handleGetUsers(){
     return (dispatch) => {
@@ -20,5 +20,11 @@ export function handleGetUsers(){
 export function handleAuthUser(id){
     return(dispatch) => {
         dispatch(authUser(id));
+    }
+}
+
+export function handleSaveUserAnswer(answer, option){
+    return(dispatch) => {
+        dispatch(saveUserAnswer(answer, option))
     }
 }

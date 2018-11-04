@@ -1,4 +1,11 @@
-import { GET_USERS, AUTHED_USER } from './actionTypes';
+import { GET_USERS, AUTHED_USER, SAVE_USER_ANSWER } from './actionTypes';
+
+export function authUser(id){
+    return {
+        type: AUTHED_USER,
+        id
+    }
+}
 
 export function getUsers(users){
     return {
@@ -7,9 +14,10 @@ export function getUsers(users){
     }
 }
 
-export function authUser(id){
+export function saveUserAnswer(answer, option){
     return {
-        type: AUTHED_USER,
-        id
+        type: SAVE_USER_ANSWER,
+        answer,
+        option
     }
 }
