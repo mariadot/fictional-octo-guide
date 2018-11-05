@@ -10,13 +10,14 @@ const QuestionsList = ({questions}) => {
 
     return(
         <div>
-            <h2>I'm a list</h2>
             <div className='ui basic segment'>
+                <ul>
                 { Object.keys(sortedQuestions).map((question) => (
                     <li key={questions[question].id} className='row'>
                         <Question question={questions[question]} />
                     </li>
                 ))}
+                </ul>
             </div>
         </div>
     )

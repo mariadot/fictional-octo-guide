@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { handleGetQuestions as getQuestions } from '../actions/questions';
-
 import QuestionsList from './QuestionsList';
+
+import 'react-tabs/style/react-tabs.css';
 
 class Dashboard extends Component {
     componentDidMount(){
@@ -25,10 +27,20 @@ class Dashboard extends Component {
         });
 
         return (
-            <div>
-                <QuestionsList questions={answeredQuestions} />
-                <QuestionsList questions={unansweredQuestions} />
-            </div>
+            <Tabs>
+                <TabList>
+                    <Tab>Answered Questions</Tab>
+                    <Tab>Unaswered Questions</Tab>
+                </TabList>
+
+                <TabPanel>
+                    <QuestionsList questions={answeredQuestions} />
+                </TabPanel>
+                <TabPanel defaultFocus={true} >
+                    <QuestionsList questions={unansweredQuestions} />
+                </TabPanel>
+            </Tabs>
+
         )
     }
 }
