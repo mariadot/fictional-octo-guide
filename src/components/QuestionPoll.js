@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { handleGetQuestions as getQuestions, handleSaveQuestionAnswer } from '../actions/questions';
 import { handleSaveUserAnswer } from '../actions/users';
 
 class QuestionPoll extends Component {
     state = {
-        option: 'optionOne'
+        option: 'optionOne',
+        pollAnswered: false
     }
 
     componentDidMount() {
@@ -21,11 +22,13 @@ class QuestionPoll extends Component {
     } 
 
     onSubmitAnswer = (e) => {
-        const { dispatch, question } = this.props;
         e.preventDefault();
-        console.log(question.id, this.state.option);
+        const { dispatch, question } = this.props;
         dispatch(handleSaveQuestionAnswer(question.id, this.state.option));
         dispatch(handleSaveUserAnswer(question.id, this.state.option));
+        this.setState(()=>({
+            pollAnswered: true
+        }))
     }
 
     render(){
@@ -35,6 +38,10 @@ class QuestionPoll extends Component {
 
         if(!question) {
             return (<div>Loading</div>)
+        }
+
+        if(this.state.pollAnswered === true){
+            return <Redirect to='/' />
         }
 
         return (
