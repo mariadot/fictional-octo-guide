@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { handleSaveNewQuestion } from '../actions/questions';
 
 class NewQuestion extends Component {
     state = {
         option1: '',
         option2: '',
+        questionAdded: false
     }
 
     handleChange = (e) => {
@@ -16,9 +19,19 @@ class NewQuestion extends Component {
 
     onSubmitAnswer = (e) => {
         e.preventDefault();
+        const { dispatch } = this.props;
+        const { option1, option2 } = this.state;
+        dispatch(handleSaveNewQuestion(option1, option2));
+        this.setState({
+            questionAdded: true
+        })
     }
 
     render(){
+        if(this.state.questionAdded === true){
+            return <Redirect to='/' />
+        }
+
         return (
             <div className='new-question ui three column stackable center aligned grid'>
                 <div className='column'>
@@ -28,7 +41,7 @@ class NewQuestion extends Component {
                     <div className="ui attached segment">
                         <h2>Complete the question</h2>
                         <h3>Would you rather...?</h3>
-                        <form className='form stacked'>
+                        <form onSubmit={this.onSubmitAnswer} className='form stacked'>
                             <div className='field'>
                                 <label htmlFor='option1'>Option one</label>
                                 <div className="ui fluid input">

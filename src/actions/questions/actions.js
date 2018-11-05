@@ -44,19 +44,21 @@ export function handleSaveQuestionAnswer(question, answer){
 }
 
 
-export function handleSaveNewQuestion(option1, option2, author){
-    return (dispatch) => {
-        dispatch(showLoading());
-        return API._saveQuestion({
+export function handleSaveNewQuestion(option1, option2){
+    return (dispatch, getState) => {
+        const { authUser } = getState();
+        const question = {
             optionOneText: option1, 
             optionTwoText: option2, 
-            author: author
-        })
+            author: authUser
+        }
+        dispatch(showLoading());
+        return API._saveQuestion(question)
         .then(()=>{
             dispatch(saveNewQuestion({
                 option1,
                 option2,
-                author
+                authUser
             }));
             dispatch(hideLoading());
         })
