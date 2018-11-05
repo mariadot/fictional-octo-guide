@@ -1,4 +1,8 @@
-import { GET_USERS, AUTHED_USER, SAVE_USER_ANSWER } from '../actions/users/actionTypes';
+import { 
+    GET_USERS,
+    AUTHED_USER, 
+    SAVE_USER_ANSWER, 
+    SAVE_USER_NEW_QUESTION } from '../actions/users/actionTypes';
 
 export function users(state = {}, action) {
     switch(action.type) {
@@ -22,8 +26,17 @@ export function users(state = {}, action) {
                     }
                 }
             }
+        case SAVE_USER_NEW_QUESTION:
+        const {author, id} = action.userQuestion;
+            return {
+                ...state,
+                [author]: {
+                    ...state[author],
+                    questions: state[author].questions.concat(id)
+                }
+            };
         default:
-            return state
+            return state;
     }
 }
 

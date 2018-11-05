@@ -6,6 +6,8 @@ import {
     saveQuestionVotes,
     saveNewQuestion } from './actionCreators';
 
+import { saveUserNewQuestion } from '../users/actionCreators';
+
 export function handleGetQuestions(){
     return (dispatch) => {
         dispatch(showLoading());
@@ -56,6 +58,7 @@ export function handleSaveNewQuestion(option1, option2){
         return API._saveQuestion(question)
         .then((formattedQuestion)=>{
             dispatch(saveNewQuestion(formattedQuestion));
+            dispatch(saveUserNewQuestion(formattedQuestion));
             dispatch(hideLoading());
         })
         .catch(()=>{
