@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { handleGetQuestions as getQuestions, handleSaveQuestionAnswer } from '../actions/questions';
 import { handleSaveUserAnswer } from '../actions/users';
 
@@ -26,9 +26,6 @@ class QuestionPoll extends Component {
         const { dispatch, question } = this.props;
         dispatch(handleSaveQuestionAnswer(question.id, this.state.option));
         dispatch(handleSaveUserAnswer(question.id, this.state.option));
-        this.setState(()=>({
-            pollAnswered: true
-        }))
     }
 
     render(){
@@ -38,10 +35,6 @@ class QuestionPoll extends Component {
 
         if(!question) {
             return (<div>Loading</div>)
-        }
-
-        if(this.state.pollAnswered === true){
-            return <Redirect to='/' />
         }
 
         return (
@@ -94,7 +87,7 @@ class QuestionPoll extends Component {
 }
 
 function mapStateToProps({users, questions}, props){
-    const { id } = props.match.params;
+    const { id } = props;
     const currentQuestion = questions[id];
     const questionAuthor = currentQuestion ? currentQuestion.author : '';
     const author = users[questionAuthor] ? users[questionAuthor].name : '';
@@ -106,4 +99,4 @@ function mapStateToProps({users, questions}, props){
 }
 
 
-export default withRouter(connect(mapStateToProps)(QuestionPoll));
+export default connect(mapStateToProps)(QuestionPoll);
