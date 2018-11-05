@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { handleAuthUser } from '../actions/users';
 
 class Nav extends Component {
     handleLogout = () =>{
         const { dispatch } = this.props;
         dispatch(handleAuthUser(''));
+        this.props.history.push("/");
     }
 
     render(){
         const { currentUser } = this.props; 
+
         return (
             <nav>
                 <div className='ui secondary pointing menu'>
@@ -50,4 +52,4 @@ function mapStateToProps({authUser, users}){
     }
 }
 
-export default connect(mapStateToProps)(Nav);
+export default withRouter(connect(mapStateToProps)(Nav));

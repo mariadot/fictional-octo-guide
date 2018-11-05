@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from  'react-redux';
 import { handleGetUsers as getUsers } from '../actions/users';
 import Nav from './Nav';
@@ -30,16 +30,14 @@ class App extends Component {
         const { authUser } = this.props;
             return (
                 <Router>
-                    <Fragment>
-                        <div className='ui container'>
-                            <LoadingBar />
-                            <Nav />
-                            <Route path='/' exact component={ authUser.length > 0 ? Dashboard : Login } />
-                            <PrivateRoute path='/leaderboard' component={Leaderboard} authUser={authUser} />
-                            <PrivateRoute path='/add' component={NewQuestion} authUser={authUser} />
-                            <PrivateRoute path='/questions/:id' component={QuestionView} authUser={authUser} />
-                        </div>
-                    </Fragment>
+                    <div className='ui container'>
+                        <LoadingBar />
+                        <Nav />
+                        <Route path='/' exact component={ authUser.length > 0 ? Dashboard : Login } />
+                        <PrivateRoute path='/leaderboard' component={Leaderboard} authUser={authUser} />
+                        <PrivateRoute path='/add' component={NewQuestion} authUser={authUser} />
+                        <PrivateRoute path='/questions/:id' component={QuestionView} authUser={authUser} />
+                    </div>
                 </Router>
         );
     }
