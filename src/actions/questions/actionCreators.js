@@ -15,10 +15,9 @@ export function saveQuestionAnswer(question, answer){
     }
 }
 
-export function saveQuestionVotes(question, answer){
+export function saveQuestionVotes(questionAnswer){
     return {
         type: SAVE_QUESTION_VOTES,
-        question,
-        answer,
+        questionAnswer
     }
 }

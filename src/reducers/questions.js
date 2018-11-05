@@ -8,9 +8,9 @@ export function questions(state = {}, action) {
                 ...action.questions
             }
         case SAVE_QUESTION_VOTES:
-            const answer = action.question.answer;
-            const qid = action.question.qid;
-            const user = action.question.authedUser;
+            const answer = action.questionAnswer.answer;
+            const qid = action.questionAnswer.qid;
+            const user = action.questionAnswer.authedUser;
             return {
                 ...state,
                 [qid]: { 
