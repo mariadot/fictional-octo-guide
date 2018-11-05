@@ -33,7 +33,7 @@ class QuestionResults extends Component {
                                             <i className='check icon'></i>
                                         </div>
                                     }
-                                    <div>{optionOne}?</div>
+                                    <div>{optionOne}</div>
                                     <div className="ui small progress">
                                         <div className="bar"  style={{width: optionOnePercentage+'%'}}>
                                             <div className="progress">{optionOnePercentage}%</div>
@@ -42,6 +42,7 @@ class QuestionResults extends Component {
                                     </div>
                                     <span>{optionOneVotes} out of {allVotes} votes</span>
                                 </div>
+                                <div className='ui horizontal divider'>or</div>
                                 <div className='ui segment'>
                                     { userAnswer === 'optionTwo' &&
                                         <div className="ui olive right corner label">

@@ -55,7 +55,7 @@ class NewQuestion extends Component {
                                     <input onChange={this.handleChange} placeholder="Input second option" type="text" name='option2'/>
                                 </div>
                             </div>
-                            <button className="ui secondary button">
+                            <button type='submit' className="ui secondary button">
                                 Add Question
                             </button>
                         </form>

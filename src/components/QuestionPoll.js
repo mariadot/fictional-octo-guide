@@ -72,7 +72,7 @@ class QuestionPoll extends Component {
                                             <label>{optionTwo}</label>
                                         </div>
                                     </div>
-                                    <button type='submit 'className='ui basic green button'>
+                                    <button type='submit' className='ui basic green button'>
                                         Submit your answer
                                     </button>
                                 </form>
