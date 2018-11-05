@@ -29,18 +29,19 @@ class Dashboard extends Component {
         return (
             <div className='container'>
                 <div className='ui stackable center aligned grid'>
-                    <Tabs>
+                    <Tabs defaultIndex={1}>
                         <TabList>
-                            <Tab>Unaswered Questions</Tab>
                             <Tab>Answered Questions</Tab>
+                            <Tab>Unaswered Questions</Tab>
                         </TabList>
 
                         <TabPanel>
-                            <QuestionsList questions={unansweredQuestions} />
-                        </TabPanel>
-                        <TabPanel>
                             <QuestionsList questions={answeredQuestions} />
                         </TabPanel>
+                        <TabPanel>
+                            <QuestionsList questions={unansweredQuestions} />
+                        </TabPanel>
+                        
                         
                     </Tabs>
                 </div>
