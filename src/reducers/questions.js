@@ -22,7 +22,11 @@ export function questions(state = {}, action) {
                 }
             }
         case SAVE_NEW_QUESTION:
-            return state;
+            const { question } = action;
+            return {
+                ...state,
+                [question.id]: question
+            }
         default:
             return state;
     }

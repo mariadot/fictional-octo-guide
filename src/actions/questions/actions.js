@@ -54,12 +54,8 @@ export function handleSaveNewQuestion(option1, option2){
         }
         dispatch(showLoading());
         return API._saveQuestion(question)
-        .then(()=>{
-            dispatch(saveNewQuestion({
-                option1,
-                option2,
-                authUser
-            }));
+        .then((formattedQuestion)=>{
+            dispatch(saveNewQuestion(formattedQuestion));
             dispatch(hideLoading());
         })
         .catch(()=>{
