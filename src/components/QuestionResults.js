@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 class QuestionResults extends Component {
     render(){
         const { userAnswer, question, author } = this.props;
-        const optionOne = question.optionOne ? question.optionOne.text : '';
-        const optionTwo = question.optionTwo ? question.optionTwo.text : '';
-        const allVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
-        const optionOneVotes = ( question.optionOne.votes.length / allVotes) * 100;
-        const optionTwoVotes = (question.optionTwo.votes.length / allVotes) * 100;
-        
+        const optionOne = question.optionOne.text;
+        const optionTwo = question.optionTwo.text;
+        const optionOneVotes = question.optionOne.votes.length;
+        const optionTwoVotes = question.optionTwo.votes.length;
+        const allVotes =  optionOneVotes + optionTwoVotes;
+        const optionOnePercentage = Math.round(( optionOneVotes / allVotes) * 100);
+        const optionTwoPercentage = Math.round((optionTwoVotes / allVotes) * 100);
 
         return (
             <div className='new-question ui three column stackable center aligned grid'>
@@ -23,35 +24,35 @@ class QuestionResults extends Component {
                                 </div>
                             </div>
                             <div className="content">
-                            <h2>Results: {userAnswer}</h2>
+                            <h2>Results:</h2>
                                 <div className='ui segment'>
-                                    { userAnswer == 'optionOne' &&
+                                    { userAnswer === 'optionOne' &&
                                         <div className="ui olive right corner label">
                                             <i className='check icon'></i>
                                         </div>
                                     }
                                     <div>{optionOne}?</div>
                                     <div className="ui small progress">
-                                        <div className="bar"  style={{width: optionOneVotes+'%'}}>
-                                            <div className="progress">{optionOneVotes}%</div>
+                                        <div className="bar"  style={{width: optionOnePercentage+'%'}}>
+                                            <div className="progress">{optionOnePercentage}%</div>
                                         </div>
                                         
                                     </div>
-                                    <span>{question.optionOne.votes.length} out of {allVotes} votes</span>
+                                    <span>{optionOneVotes} out of {allVotes} votes</span>
                                 </div>
                                 <div className='ui segment'>
-                                    { userAnswer == 'optionTwo' &&
+                                    { userAnswer === 'optionTwo' &&
                                         <div className="ui olive right corner label">
                                             <i className='check icon'></i>
                                         </div>
                                     }
                                     <div className="label">{optionTwo}?</div>
                                     <div className="ui small progress" >
-                                        <div className="bar" style={{width: optionTwoVotes+'%'}}>
-                                            <div className="progress">{optionTwoVotes}%</div>
+                                        <div className="bar" style={{width: optionTwoPercentage+'%'}}>
+                                            <div className="progress">{optionTwoPercentage}%</div>
                                         </div>
                                     </div>
-                                    <span>{question.optionTwo.votes.length} out of {allVotes} votes</span>
+                                    <span>{optionTwoVotes} out of {allVotes} votes</span>
                                 </div>
                             </div>
                         </div>
@@ -62,19 +63,18 @@ class QuestionResults extends Component {
     }
 }
 
-function mapStateToProps({users, questions}, props){
+function mapStateToProps({authUser, users, questions}, props){
     const { id } = props;
     const currentQuestion = questions[id];
-    const questionAuthor = currentQuestion ? currentQuestion.author : '';
-    const author = users[questionAuthor] ? users[questionAuthor].name : '';
-    const userAnswer = users[questionAuthor].answers[id];
+    const questionAuthor = currentQuestion.author;
+    const author = users[questionAuthor].name;
+    const userAnswer = users[authUser].answers[id];
 
     return {
         author: author,
-        question: currentQuestion ? currentQuestion : {},
+        question: currentQuestion,
         userAnswer: userAnswer,
     }
 }
-
 
 export default connect(mapStateToProps)(QuestionResults);
