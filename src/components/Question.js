@@ -8,7 +8,7 @@ class Question extends Component {
 
         return (
             <div>
-                <div className='question ui three column stackable center aligned grid'>
+                <div className='question ui column stackable center aligned grid'>
                     <div className='column'>
                     <div className="ui cards">
                         <div className="card">

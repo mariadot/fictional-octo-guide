@@ -27,21 +27,24 @@ class Dashboard extends Component {
         });
 
         return (
-            <Tabs>
-                <TabList>
-                    <Tab>Unaswered Questions</Tab>
-                    <Tab>Answered Questions</Tab>
-                </TabList>
+            <div className='container' style={{marginTop: '20px'}}>
+                <div className='ui stackable center aligned grid'>
+                    <Tabs>
+                        <TabList>
+                            <Tab>Unaswered Questions</Tab>
+                            <Tab>Answered Questions</Tab>
+                        </TabList>
 
-                <TabPanel>
-                    <QuestionsList questions={unansweredQuestions} />
-                </TabPanel>
-                <TabPanel>
-                    <QuestionsList questions={answeredQuestions} />
-                </TabPanel>
-                
-            </Tabs>
-
+                        <TabPanel>
+                            <QuestionsList questions={unansweredQuestions} />
+                        </TabPanel>
+                        <TabPanel>
+                            <QuestionsList questions={answeredQuestions} />
+                        </TabPanel>
+                        
+                    </Tabs>
+                </div>
+            </div>
         )
     }
 }
