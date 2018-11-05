@@ -3,7 +3,7 @@ import Question from './Question';
 
 const QuestionsList = ({questions}) => {
     if(!questions.length > 0){
-        return 'Loading';
+        return 'No questions available';
     }
 
     const sortedQuestions = questions.sort((a,b) => (b.timestamp - a.timestamp));
