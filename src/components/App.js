@@ -8,6 +8,7 @@ import NewQuestion from './NewQuestion';
 import QuestionView from './QuestionView';
 import Dashboard from './Dashboard';
 import Login from './Login';
+import NotFound from './NotFound';
 import LoadingBar from 'react-redux-loading';
 
 import '../App.css';
@@ -34,6 +35,7 @@ class App extends Component {
                         <LoadingBar />
                         <Nav />
                         <Route path='/' exact component={ authUser.length > 0 ? Dashboard : Login } />
+                        <PrivateRoute path='/404' component={NotFound} authUser={authUser} />
                         <PrivateRoute path='/leaderboard' component={Leaderboard} authUser={authUser} />
                         <PrivateRoute path='/add' component={NewQuestion} authUser={authUser} />
                         <PrivateRoute path='/questions/:id' component={QuestionView} authUser={authUser} />

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import QuestionPoll from './QuestionPoll';
 import QuestionResults from './QuestionResults';
 
 class QuestionView extends Component {
     render() {
-        const { users, authUser, questionId  } = this.props;
+        const { users, authUser, questions, questionId  } = this.props;
         const currentUser = users[authUser];
+
+        if (!questions[questionId]){
+            return <Redirect to='/404' />
+        }
 
         if (currentUser.answers[questionId]){
             return <QuestionResults id={questionId} />
@@ -17,11 +21,12 @@ class QuestionView extends Component {
     }
 }
 
-function mapStateToProps({users, authUser}, props){
+function mapStateToProps({users, authUser, questions}, props){
     const { id } = props.match.params;
     return {
         users,
         authUser,
+        questions,
         questionId: id
     }
 }
