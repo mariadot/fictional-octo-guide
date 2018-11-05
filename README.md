@@ -14,7 +14,7 @@ Would you rather...:
 
 ---
 
-This app was bootstrapped with `create-react-app`, please run ´npm install´ Once install is done, please run ´npm start´ to run the application. 
+This app was bootstrapped with `create-react-app`, please run `npm install` Once install is done, please run`npm start` to run the application. 
 
 ---
 
