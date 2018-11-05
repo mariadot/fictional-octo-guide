@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class UserProfile extends Component {
     render(){
         const { user } = this.props;
-        const name = user.name;
+        const { name, avatarURL } = user;
         const answers = Object.keys(user.answers).length;
         const questions = user.questions.length;
 
@@ -11,7 +11,7 @@ class UserProfile extends Component {
             <div className='ui card'>
                 <div className='content'>
                     <div className='header'>
-                        <img className='ui image circular tiny left floated' alt='user avatar' src='https://lorempixel.com/output/cats-q-c-400-400-9.jpg' />  
+                        <img className='ui image circular tiny left floated' alt='user avatar' src={avatarURL} />  
                         <h2>{name}</h2>
                         <p>Score: {answers+questions}</p>
                     </div>

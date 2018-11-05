@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Question extends Component {
     render(){
-        const { question, author } = this.props;
+        const { question, author, avatar } = this.props;
 
         return (
             <div>
@@ -18,7 +18,7 @@ class Question extends Component {
                                 </header>
                             </div>
                             <div className="content">
-                                <img className='ui image circular tiny left floated' alt='user avatar' src='https://lorempixel.com/output/cats-q-c-400-400-9.jpg' />  
+                                <img className='ui image circular tiny left floated' alt='user avatar' src={avatar} />  
                                     <h3>Would you rather...?</h3>
                                     <p>...{ question.optionOne.text }...</p>
                             </div>
@@ -38,11 +38,13 @@ class Question extends Component {
 
 function mapStateToProps({users}, {question}){
     const author = users[question.author] ? users[question.author].name : '';
+    const avatar = users[question.author].avatarURL;
 
     return {
         users,
         author,
-        question: question
+        question: question,
+        avatar: avatar
     }
 }
 
