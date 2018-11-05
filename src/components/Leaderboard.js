@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserProfile from './UserProfile';
-import { or } from 'ip';
 
 class Leaderboard extends Component {
     render(){

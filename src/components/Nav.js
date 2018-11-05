@@ -10,7 +10,7 @@ class Nav extends Component {
     }
 
     render(){
-        const { authUser, users, currentUser } = this.props; 
+        const { currentUser } = this.props; 
         return (
             <nav>
                 <div className='ui secondary pointing menu'>
