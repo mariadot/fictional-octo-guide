@@ -1,4 +1,5 @@
 export {
     handleGetQuestions,
-    handleSaveQuestionAnswer
+    handleSaveQuestionAnswer,
+    handleSaveNewQuestion
 } from './actions';

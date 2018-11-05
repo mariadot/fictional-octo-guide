@@ -1,7 +1,10 @@
 import * as API from './../../utils/_DATA';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
-import { getQuestions, saveQuestionVotes } from './actionCreators';
+import { 
+    getQuestions,
+    saveQuestionVotes,
+    saveNewQuestion } from './actionCreators';
 
 export function handleGetQuestions(){
     return (dispatch) => {
@@ -32,6 +35,29 @@ export function handleSaveQuestionAnswer(question, answer){
                     qid: question,
                     answer: answer
                 }))
+            dispatch(hideLoading());
+        })
+        .catch(()=>{
+            console.log('There was an error');
+        })
+    }
+}
+
+
+export function handleSaveNewQuestion(option1, option2, author){
+    return (dispatch) => {
+        dispatch(showLoading());
+        return API._saveQuestion({
+            optionOneText: option1, 
+            optionTwoText: option2, 
+            author: author
+        })
+        .then(()=>{
+            dispatch(saveNewQuestion({
+                option1,
+                option2,
+                author
+            }));
             dispatch(hideLoading());
         })
         .catch(()=>{

@@ -1,4 +1,4 @@
-import { GET_QUESTIONS, SAVE_QUESTION_VOTES } from '../actions/questions/actionTypes';
+import { GET_QUESTIONS, SAVE_QUESTION_VOTES, SAVE_NEW_QUESTION } from '../actions/questions/actionTypes';
 
 export function questions(state = {}, action) {
     switch(action.type) {
@@ -21,6 +21,8 @@ export function questions(state = {}, action) {
                     }
                 }
             }
+        case SAVE_NEW_QUESTION:
+            return state;
         default:
             return state;
     }
