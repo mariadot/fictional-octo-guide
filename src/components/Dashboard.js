@@ -27,7 +27,7 @@ class Dashboard extends Component {
         });
 
         return (
-            <div className='container' style={{marginTop: '20px'}}>
+            <div className='container'>
                 <div className='ui stackable center aligned grid'>
                     <Tabs>
                         <TabList>

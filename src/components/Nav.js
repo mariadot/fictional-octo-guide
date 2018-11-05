@@ -14,7 +14,7 @@ class Nav extends Component {
         const { currentUser } = this.props; 
 
         return (
-            <nav>
+            <nav style={{marginBottom: '20px'}}>
                 <div className='ui secondary pointing menu'>
                         <NavLink to='/' exact className='item' activeClassName='active'>
                             Home
