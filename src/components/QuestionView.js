@@ -6,9 +6,8 @@ import QuestionResults from './QuestionResults';
 
 class QuestionView extends Component {
     render() {
-        const { users, authUser } = this.props;
+        const { users, authUser, questionId  } = this.props;
         const currentUser = users[authUser];
-        const questionId = this.props.id;
 
         if (currentUser.answers[questionId]){
             return <QuestionResults id={questionId} />
@@ -23,7 +22,7 @@ function mapStateToProps({users, authUser}, props){
     return {
         users,
         authUser,
-        id: id
+        questionId: id
     }
 }
 
