@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class NewQuestion extends Component {
+    state = {
+        option1: '',
+        option2: '',
+    }
+
+    handleChange = (e) => {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    onSubmitAnswer = (e) => {
+        e.preventDefault();
+    }
+
     render(){
         return (
             <div className='new-question ui three column stackable center aligned grid'>
@@ -15,14 +32,14 @@ class NewQuestion extends Component {
                             <div className='field'>
                                 <label htmlFor='option1'>Option one</label>
                                 <div className="ui fluid input">
-                                    <input placeholder="Input first option" type="text" name='option1'/>
+                                    <input onChange={this.handleChange} placeholder="Input first option" type="text" name='option1'/>
                                 </div>
                             </div>
                             <div className='ui horizontal divider'>or</div>
                             <div className='field'>
                                 <label htmlFor='option2'>Option two</label>
                                 <div className="ui fluid input">
-                                    <input placeholder="Input second option" type="text" name='option2'/>
+                                    <input onChange={this.handleChange} placeholder="Input second option" type="text" name='option2'/>
                                 </div>
                             </div>
                             <button className="ui secondary button">
@@ -36,4 +53,4 @@ class NewQuestion extends Component {
     }
 }
 
-export default NewQuestion;
+export default connect()(NewQuestion);
