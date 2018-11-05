@@ -8,7 +8,20 @@ export function users(state = {}, action) {
                 ...action.users
             }
         case SAVE_USER_ANSWER:
-            return state
+            const user = action.userAnswer.authedUser;
+            const qid = action.userAnswer.qid;
+            const answer = action.userAnswer.answer;
+
+            return {
+                ...state,
+                [user]: {
+                    ...state[user],
+                    answers:{
+                        ...state[user].answers,
+                        [qid]: answer
+                    }
+                }
+            }
         default:
             return state
     }

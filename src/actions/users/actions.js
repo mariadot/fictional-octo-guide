@@ -23,8 +23,15 @@ export function handleAuthUser(id){
     }
 }
 
-export function handleSaveUserAnswer(answer, option){
-    return(dispatch) => {
-        dispatch(saveUserAnswer(answer, option))
+export function handleSaveUserAnswer(question, option){
+    return(dispatch, getState) => {
+        const { authUser } = getState();
+        dispatch(showLoading());
+        dispatch(saveUserAnswer({
+            authedUser: authUser,
+            qid: question,
+            answer: option
+        }))
+        dispatch(hideLoading());
     }
 }

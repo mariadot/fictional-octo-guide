@@ -14,10 +14,9 @@ export function getUsers(users){
     }
 }
 
-export function saveUserAnswer(answer, option){
+export function saveUserAnswer(userAnswer){
     return {
         type: SAVE_USER_ANSWER,
-        answer,
-        option
+        userAnswer
     }
 }

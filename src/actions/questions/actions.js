@@ -32,6 +32,7 @@ export function handleSaveQuestionAnswer(question, answer){
                     qid: question,
                     answer: answer
                 }))
+            dispatch(hideLoading());
         })
         .catch(()=>{
             console.log('There was an error');
