@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class QuestionResults extends Component {
     render(){
-        const { userAnswer, question, author } = this.props;
+        const { userAnswer, question, author, authorAvatar } = this.props;
         const optionOne = question.optionOne.text;
         const optionTwo = question.optionTwo.text;
         const optionOneVotes = question.optionOne.votes.length;
@@ -11,6 +11,7 @@ class QuestionResults extends Component {
         const allVotes =  optionOneVotes + optionTwoVotes;
         const optionOnePercentage = Math.round(( optionOneVotes / allVotes) * 100);
         const optionTwoPercentage = Math.round((optionTwoVotes / allVotes) * 100);
+        console.log(authorAvatar);
 
         return (
             <div className='new-question ui three column stackable center aligned grid'>
@@ -19,12 +20,13 @@ class QuestionResults extends Component {
                         <div className="card">
                             <div className="content">
                                 <div className="header">
-                                    <img className='ui avatar tiny circular image' alt='user avatar' src='https://lorempixel.com/output/cats-q-c-200-200-9.jpg' />
+                                    <img className='ui avatar tiny circular image' alt='user avatar' src={authorAvatar} />
                                     <span>Asked by {author}</span>
                                 </div>
                             </div>
                             <div className="content">
                             <h2>Results:</h2>
+                            <h3>Would you rather...</h3>
                                 <div className='ui segment'>
                                     { userAnswer === 'optionOne' &&
                                         <div className="ui olive right corner label">
@@ -68,12 +70,14 @@ function mapStateToProps({authUser, users, questions}, props){
     const currentQuestion = questions[id];
     const questionAuthor = currentQuestion.author;
     const author = users[questionAuthor].name;
+    const authorAvatar = users[questionAuthor].avatarURL;
     const userAnswer = users[authUser].answers[id];
 
     return {
         author: author,
         question: currentQuestion,
         userAnswer: userAnswer,
+        authorAvatar: authorAvatar
     }
 }
 

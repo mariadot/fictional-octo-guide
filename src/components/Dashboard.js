@@ -29,16 +29,17 @@ class Dashboard extends Component {
         return (
             <Tabs>
                 <TabList>
-                    <Tab>Answered Questions</Tab>
                     <Tab>Unaswered Questions</Tab>
+                    <Tab>Answered Questions</Tab>
                 </TabList>
 
                 <TabPanel>
-                    <QuestionsList questions={answeredQuestions} />
-                </TabPanel>
-                <TabPanel defaultFocus={true} >
                     <QuestionsList questions={unansweredQuestions} />
                 </TabPanel>
+                <TabPanel>
+                    <QuestionsList questions={answeredQuestions} />
+                </TabPanel>
+                
             </Tabs>
 
         )

@@ -28,7 +28,7 @@ class QuestionPoll extends Component {
     }
 
     render(){
-        const { question, author } = this.props;
+        const { question, author, authorAvatar } = this.props;
         const optionOne = question.optionOne ? question.optionOne.text : '';
         const optionTwo = question.optionTwo ? question.optionTwo.text : '';
 
@@ -43,7 +43,7 @@ class QuestionPoll extends Component {
                         <div className="card">
                             <div className="content">
                                 <div className="header">
-                                    <img className='ui avatar image' alt='user avatar' src='https://lorempixel.com/output/cats-q-c-200-200-9.jpg' />
+                                    <img className='ui avatar image' alt='user avatar' src={authorAvatar} />
                                     <span>{author} asks</span>
                                 </div>
                             </div>
@@ -90,10 +90,12 @@ function mapStateToProps({users, questions}, props){
     const currentQuestion = questions[id];
     const questionAuthor = currentQuestion ? currentQuestion.author : '';
     const author = users[questionAuthor] ? users[questionAuthor].name : '';
+    const authorAvatar = users[questionAuthor] ? users[questionAuthor].avatarURL: '';
 
     return {
         author: author,
-        question: currentQuestion ? currentQuestion : {}
+        question: currentQuestion ? currentQuestion : {},
+        authorAvatar: authorAvatar
     }
 }
 
