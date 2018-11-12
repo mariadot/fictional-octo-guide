@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from  'react-redux';
 import { handleGetUsers as getUsers } from '../actions/users';
+import { handleGetQuestions as getQuestions } from '../actions/questions';
 import Nav from './Nav';
 import Leaderboard from './Leaderboard';
 import NewQuestion from './NewQuestion';
@@ -25,6 +26,7 @@ class App extends Component {
     componentDidMount(){
         const { dispatch } = this.props;
         dispatch(getUsers());
+        dispatch(getQuestions());
     }
 
     render() {
@@ -34,7 +36,7 @@ class App extends Component {
                     <div className='ui container'>
                         <LoadingBar />
                         <Nav />
-                        <Route path='/' exact component={ authUser.length > 0 ? Dashboard : Login } />
+                        <PrivateRoute path='/' exact component={Dashboard} authUser={authUser} />
                         <PrivateRoute path='/404' component={NotFound} authUser={authUser} />
                         <PrivateRoute path='/leaderboard' component={Leaderboard} authUser={authUser} />
                         <PrivateRoute path='/add' component={NewQuestion} authUser={authUser} />

@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import QuestionPoll from './QuestionPoll';
 import QuestionResults from './QuestionResults';
+import NotFound from './NotFound';
 
 class QuestionView extends Component {
     render() {
-        const { users, authUser, questions, questionId  } = this.props;
+        const { users, authUser, questionId, currentQuestion } = this.props;
         const currentUser = users[authUser];
 
-        if (!questions[questionId]){
-            return <Redirect to='/404' />
+        if (!currentQuestion){
+            return <NotFound />
         }
 
         if (currentUser.answers[questionId]){
@@ -23,11 +24,12 @@ class QuestionView extends Component {
 
 function mapStateToProps({users, authUser, questions}, props){
     const { id } = props.match.params;
+    const currentQuestion = questions[id];
     return {
         users,
         authUser,
-        questions,
-        questionId: id
+        questionId: id,
+        currentQuestion: currentQuestion
     }
 }
 
