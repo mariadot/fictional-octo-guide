@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import QuestionPoll from './QuestionPoll';
 import QuestionResults from './QuestionResults';
 import NotFound from './NotFound';
 
-class QuestionView extends Component {
-    render() {
-        const { users, authUser, questionId, currentQuestion } = this.props;
-        const currentUser = users[authUser];
+const QuestionView = (props) => {
+    const { users, authUser, questionId, currentQuestion } = props;
+    const currentUser = users[authUser];
 
-        if (!currentQuestion){
-            return <NotFound />
-        }
-
-        if (currentUser.answers[questionId]){
-            return <QuestionResults id={questionId} />
-        } else {
-            return <QuestionPoll id={questionId} />
-        }
+    if (!currentQuestion){
+        return <NotFound />
     }
+
+    if (currentUser.answers[questionId]){
+        return <QuestionResults id={questionId} />
+    } else {
+        return <QuestionPoll id={questionId} />
+    }
+
 }
 
 function mapStateToProps({users, authUser, questions}, props){
