@@ -43,7 +43,7 @@ class QuestionPoll extends Component {
                         <div className="card">
                             <div className="content">
                                 <div className="header">
-                                    <img className='ui avatar image' alt='user avatar' src={authorAvatar} />
+                                    <img className='ui avatar image' alt={`${author} avatar`} src={authorAvatar} />
                                     <span>{author} asks</span>
                                 </div>
                             </div>

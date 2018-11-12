@@ -11,7 +11,7 @@ class UserProfile extends Component {
             <div className='ui card'>
                 <div className='content'>
                     <div className='header'>
-                        <img className='ui image circular tiny left floated' alt='user avatar' src={avatarURL} />  
+                        <img className='ui image circular tiny left floated' alt={`${author} avatar`} src={avatarURL} />  
                         <h2>{name}</h2>
                         <p>Score: {answers+questions}</p>
                     </div>

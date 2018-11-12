@@ -18,7 +18,7 @@ class Question extends Component {
                                 </header>
                             </div>
                             <div className="content">
-                                <img className='ui image circular tiny left floated' alt='user avatar' src={avatar} />  
+                                <img className='ui image circular tiny left floated' alt={`${author} avatar`} src={avatar} />  
                                     <h3>Would you rather...?</h3>
                                     <p>...{ question.optionOne.text }...</p>
                             </div>

@@ -20,7 +20,7 @@ class QuestionResults extends Component {
                         <div className="card">
                             <div className="content">
                                 <div className="header">
-                                    <img className='ui avatar tiny circular image' alt='user avatar' src={authorAvatar} />
+                                    <img className='ui avatar tiny circular image' alt={`${author} avatar`} src={authorAvatar} />
                                     <span>Asked by {author}</span>
                                 </div>
                             </div>
